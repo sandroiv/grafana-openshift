@@ -2,8 +2,8 @@
 
 source /etc/sysconfig/grafana-server
 
-[ -z "${DATAD} ] && DATAD=${DATA_DIR}
-[ -z "${PLGND} ] && PLGND=${PLUGINS_DIR}
+[ -z ${DATAD} ] && DATAD=${DATA_DIR}
+[ -z ${PLGND} ] && PLGND=${PLUGINS_DIR}
 
 if [ ! -z "${GF_INSTALL_PLUGINS}" ]; then
   OLDIFS=$IFS

@@ -1,0 +1,25 @@
+https://emarcel.com/installing-openshift-origin-in-a-home-lab/
+
+Next, create nfs-claim.yaml file:
+# vi nfs-claim.yaml
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-claim1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+As root on os-master1 node login to openshift console and run oc commands:
+oc login -u system:admin -n default
+oc create -f nfs-pv.yaml
+oc create -f nfs-claim.yaml
+
+oc get pv
+pv0001 5Gi RWO Recycle Bound openshift-ansible-service-broker/etcd 1d
+
+oc get pvc
+nfs-claim1 Pending
